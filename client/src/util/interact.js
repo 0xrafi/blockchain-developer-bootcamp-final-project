@@ -1,7 +1,7 @@
 // import { pinJSONToIPFS } from "./pinata.js";
 import {getWeb3} from "./getWeb3"
 const contractABI = require("../contract-abi.json");
-const contractAddress = "0x4C4a07F737Bf57F6632B6CAB089B78f62385aCaE";
+const contractAddress = "0x107348e2d4C6e638A25F840C97D25435796C4e58";
 
 export const connectWallet = async () => {
   if (window.ethereum) {
@@ -38,6 +38,15 @@ export const connectWallet = async () => {
     };
   }
 };
+
+export const getCurrentSupply = async () => {
+  if (window.ethereum) {
+    const web3 = await getWeb3()
+    window.contract = await new web3.eth.Contract(contractABI, contractAddress);
+    const currentSupply = await window.contract.methods.getTotalMinted().call()
+    return currentSupply
+  }
+}
 
 export const getCurrentWalletConnected = async () => {
   if (window.ethereum) {

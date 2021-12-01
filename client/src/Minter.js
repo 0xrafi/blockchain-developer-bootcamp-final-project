@@ -2,23 +2,24 @@ import { useEffect, useState } from "react";
 import {
   connectWallet,
   getCurrentWalletConnected,
+  getCurrentSupply,
   mintNFT,
 } from "./util/interact.js";
 
 const Minter = (props) => {
   const [walletAddress, setWallet] = useState("");
   const [status, setStatus] = useState("");
-
+  const [totalSupply, setTotalSupply] = useState(0);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [url, setURL] = useState("");
 
   useEffect(async () => {
     const { address, status } = await getCurrentWalletConnected();
-
+    const currSupply = await getCurrentSupply();
     setWallet(address);
     setStatus(status);
-
+    setTotalSupply(currSupply);
     addWalletListener();
   }, []);
 
@@ -60,11 +61,14 @@ const Minter = (props) => {
       setName("");
       setDescription("");
       setURL("");
+      setTotalSupply(parseInt(totalSupply)+1);
     }
   };
 
   return (
     <div className="Minter">
+      <div>Total minted: {totalSupply}</div>
+
       <button id="walletButton" onClick={connectWalletPressed}>
         {walletAddress.length > 0 ? (
           "Connected: " +
@@ -102,7 +106,7 @@ const Minter = (props) => {
         />
       </form>
       <button id="mintButton" onClick={onMintPressed}>
-        Mint NFT
+        Mint NFT (0.1 ETH price)
       </button>
       <p id="status" style={{ color: "red" }}>
         {status}

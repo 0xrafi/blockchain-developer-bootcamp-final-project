@@ -1,1 +1,10 @@
 
+**Access Control Design Patterns** - I am using the `Ownable` design pattern to ensure that only the owner of the contract is able to withdraw the funds. I implemented this by using the OpenZeppelin library's `Ownable` contract, which sets me as the owner of the contract once I deploy it via `msg.sender` - as is typically seen in the ownable pattern - and also includes helpful additional functions like `renounceOwnership`. As I plan to add to this project and add unique NFT art, `renounceOwnership` could ensure that no NFT data is tampered with. `transferOwnership` could be useful as well. `Ownable` can also allow me to add simple pausability. I could add a simple `saleIsActive` flag, similar to what is done in the Bored Ape Yacht Club contract.
+
+**Inheritance and Interfaces** - As I mentioned I am using OpenZeppelin's contracts through Brownie's clean compilation interface (I edited the `brownie-config.yaml` to map my dependencies). I am using both `ERC721` and `Ownable`. I am using OpenZeppelin's latest version of ERC721, which does not allow for individual setting of tokenURIs as the `_setTokenURI` method is not included - instead a single base hash is expected, which works out much nicer for what I am planning: a unique set of NFT artwork. I also opted to use the OpenZeppelin `Counters` library for simple and straightforward token ID generation. OpenZeppelin also offers `Address`, `Strings`, and `Context` libraries built-in that I am using.
+
+**Inter-Contract Execution** - I did not get time to implement this because I began the final project so late. I intended to add another ERC721 token that was only mintable if the user was holding a pen. That ApeNote NFT token was not completed, but I am working to finish it soon.
+
+**Optimizing Gas** - I considered using ERC1155, as the gas savings in combining the two potential NFT contracts would be quite large, as there would be a siginificant amount of metadata that could be shared and only one contract that would need to be deployed. However, as I wanted each Pen and each Note to be unique, I decided against this.
+
+
