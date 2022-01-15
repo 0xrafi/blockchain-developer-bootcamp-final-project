@@ -122,6 +122,7 @@ export const mintNFT = async (url, name, description) => {
     data: window.contract.methods
       .mintNFT(window.ethereum.selectedAddress, "tokenURI")
       .encodeABI(),
+    value: "0x16345785D8A0000",
   };
 
   try {

@@ -9,18 +9,21 @@ import {
 const Minter = (props) => {
   const [walletAddress, setWallet] = useState("");
   const [status, setStatus] = useState("");
-  const [totalSupply, setTotalSupply] = useState(0);
+  const [totalSupply, setTotalSupply] = useState(undefined);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [url, setURL] = useState("");
 
-  useEffect(async () => {
-    const { address, status } = await getCurrentWalletConnected();
-    const currSupply = await getCurrentSupply();
-    setWallet(address);
-    setStatus(status);
-    setTotalSupply(currSupply);
-    addWalletListener();
+  useEffect(() => {
+    async function fetchData() {
+      const { address, status } = await getCurrentWalletConnected();
+      const currSupply = await getCurrentSupply();
+      setWallet(address);
+      setStatus(status);
+      setTotalSupply(currSupply);
+      addWalletListener();
+    }
+    fetchData()
   }, []);
 
   function addWalletListener() {
@@ -39,7 +42,7 @@ const Minter = (props) => {
         <p>
           {" "}
           🦊{" "}
-          <a target="_blank" href={`https://metamask.io/download.html`}>
+          <a target="_blank" rel="noreferrer" href={`https://metamask.io/download.html`}>
             You must install Metamask, a virtual Ethereum wallet, in your
             browser.
           </a>

@@ -1,4 +1,4 @@
-// contracts/Apen.sol
+// contracts/ApePen.sol
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
@@ -9,28 +9,31 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 /// @title An NFT for Ape writers
 /// @author rafi-fyi
+/// @notice simple contract created for the Consensys Dev Bootcamp final project
 /// @dev This is v0.01 intended for Ropsten testnet
 contract ApePen is ERC721, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
-    /// maximum pen amount
+    /// @notice maximum pen amount
     uint256 public MAX_PENS;
-    /// base purchase price for an ape pen
+    /// @notice base purchase price for an ape pen
     uint256 public constant penPrice = 10000000000000000; //0.01 ETH
 
+    /// @notice takes in max supply, simple ERC721 constructor
     constructor(uint256 maxNftSupply)
     ERC721("ApePen", "PEN") {
         MAX_PENS = maxNftSupply;
     }
 
-    /// withdraw function for owner implemented using call over transfer
+    /// @notice withdraw function for owner implemented using call over transfer
     function withdraw() public onlyOwner {
         uint balance = address(this).balance;
         (bool success, ) =  payable(msg.sender).call{value:balance}("");
         require(success, "Transfer failed.");
     }
 
-    /// simple mint function
+    /// @notice simple mint function
+    /// @return uint token ID of minted token
     function mintNFT(address recipient, string memory tokenURI)
         public payable
         returns (uint256)
@@ -45,8 +48,11 @@ contract ApePen is ERC721, Ownable {
         return newItemId;
     }
 
-    /// returns total minted pens, uses OpenZeppelin's Counters
+    /// @notice returns total minted pens, uses OpenZeppelin's Counters
+    /// @return uint count of total tokens
     function getTotalMinted() public view returns (uint256) {
         return _tokenIds.current();
     }
+
+
 }
