@@ -4,6 +4,8 @@ This is my final project for Consensys' Blockchain Developer Bootcamp. I'll be c
 
 The app is live here: https://broken-mountain-5051.on.fleek.co/
 
+My Loom recording is live here: https://www.loom.com/share/45992e4c4cb44690bfb9cd5ab880dffb
+
 My public ETH address (rafi-fyi.eth): ```0x51d3657c2ec2dEc47A01F8a82c07e7a3085D591f```
 
 # Setup
