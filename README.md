@@ -39,7 +39,7 @@ Ape Pens is a collection of 5000 collectible NFT "pens" that allow an owner acce
 Once you own a pen, you will be able to access a Shamir's Secret Sharing encrypted, IPFS decentralized personal writing space with your own private ape notes.
 Each ape can mint anonymous "ape note" NFTs in their writing space and release them to the public, where they will be displayed on the Ape Pen writer's wall. Ape Notes are prohibitively expensive to mint, but an ape pen holder can mint as many notes as they choose.
 
-Apen will eventually consist of:
+Apen could eventually consist of:
 1. Writer's Wall - a collection of every minted "ape note" for viewing
 2. Minting - purchase an ape pen (what exists currently)
 3. Personal Wall - a wall with private ape notes that have been taken with this pen
