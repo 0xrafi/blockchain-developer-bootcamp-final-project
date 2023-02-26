@@ -1,6 +1,6 @@
 ## blockchain-developer-bootcamp-final-project
 # Ape Pens
-This is my final project for Consensys' Blockchain Developer Bootcamp. I'll be continuing development of this after the class - for now, this project is meant to meet the bare minimum requirements for completion of the course.
+This is my final project for Consensys' Blockchain Developer Bootcamp. 
 
 The app is live here: https://broken-mountain-5051.on.fleek.co/
 
@@ -33,7 +33,7 @@ You can compile with brownie compile, run with
 run tests with 
 ```brownie test```. Brownie handles local testnet ports through ganache-cli nice and neatly, so no other configuration should be needed for the 5 unit tests to run and pass.
 
-# Future Plans
+# Ape Pen Ideas
 Ape Pens is a collection of 5000 collectible NFT "pens" that allow an owner access into a haven for ape pen holders. Only 5000 pens can ever be minted.
 
 Once you own a pen, you will be able to access a Shamir's Secret Sharing encrypted, IPFS decentralized personal writing space with your own private ape notes.
